@@ -5,11 +5,14 @@ workflows:
   build:
     jobs:
       - build:
-        filters:
-          branches:
-            only:
-              - main
+          filters:
+            branches:
+              only:
+                - main
 
+
+
+# Define the jobs we want to run for this project
 jobs:
   build:
     working_directory: ~/ExampleApplication
@@ -17,15 +20,15 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run:
+      - run: 
           name: update-npm
-          command: 'sudo npm install -g npm@5'
-      - restore cache:
-          key: dependency-cache-{{checksum "package-lock.json"}}
+          command: 'sudo npm install -g npm@8.1.4'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: install-npm
           command: npm install
-      - save cache:
-          key: dependency-cache-{{ checksum "package.lock.json"}}
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
