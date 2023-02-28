@@ -36,10 +36,10 @@ jobs:
           paths:
             - ./node_modules
 
-deploy:
-  docker:
+  deploy:
+    docker:
       - image: circleci?node:10.16.3
-  steps:
+    steps:
       - run:
           name: deploy-application
           command: ssh -o StrictHostKeyChecking=no $EC2USERNAME@EC2_PUBLIC_DNS "rm -rf devopsweek3/;git clone https://github.com/mmarlenepereira/devopsweek3.git; source devopsweek3/deploy.sh"
