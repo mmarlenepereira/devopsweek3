@@ -10,7 +10,7 @@ sudo npm install -g pm2
 pm2 stop example_app
 
 # change directory into folder where application is downloaded
-cd ExampleApplication/
+cd devopsweek3/
 
 # Install application dependancies
 npm install
